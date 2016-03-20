@@ -7,7 +7,7 @@ ENV PASS aDQt9GRBg0hV3TDaWqUg
 RUN \
   apt-get update && \
   apt-get -y install \
-          mysql-server-5.5 && \
+          mysql-server && \
   rm -rf /var/lib/apt/lists/*
 
 COPY my.cnf /etc/mysql/my.cnf
@@ -16,7 +16,7 @@ COPY start.sh start.sh
 
 VOLUME ["/var/lib/mysql"]
 
+EXPOSE 3306
+
 RUN rm /usr/sbin/policy-rc.d
 CMD ["/start.sh"]
-
-EXPOSE 3306
